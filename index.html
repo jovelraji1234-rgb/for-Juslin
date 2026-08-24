@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Juslin 💖</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      height: 100vh;
+      overflow: hidden;
+      font-family: "Poppins", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ffd1dc, #ff9a9e, #fad0c4);
+      position: relative;
+    }
+    
+    /* Background Effects */
+    .hearts { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+    .heart { position: absolute; width: 20px; height: 20px; transform: rotate(45deg); animation: floatUp linear infinite; opacity: 0.85; filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.6)); }
+    .heart::before, .heart::after { content: ""; position: absolute; width: 20px; height: 20px; background: inherit; border-radius: 50%; }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+    @keyframes floatUp { from { transform: translateY(100vh) rotate(45deg) scale(0.8); } to { transform: translateY(-120px) rotate(45deg) scale(1.3); } }
+    
+    /* Screen Containers & Transitions */
+    .screen {
+      position: absolute;
+      z-index: 5;
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.75);
+      max-width: 500px;
+      width: 90%;
+      /* Animation properties */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.8s ease-in-out;
+    }
+    
+    .screen.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Typography */
+    h1 { font-size: 32px; color: #ff2e63; margin-bottom: 15px; font-weight: 900; }
+    p { font-size: 18px; color: #5a2a3a; margin-bottom: 25px; font-weight: 600; line-height: 1.5; }
+    
+    /* Buttons */
+    .btn-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
+    
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-weight: 800;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    
+    .next-btn { background: linear-gradient(135deg, #ff2e63, #ff7aa2); color: white; }
+    .next-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(255,46,99,0.3); }
+    
+    .music-btn { 
+      font-size: 14px; 
+      padding: 10px 18px; 
+      border-radius: 14px; 
+      background: rgba(255,46,99,0.12); 
+      color: #ff2e63; 
+      border: 2px solid rgba(255,46,99,0.25); 
+      box-shadow: none; 
+      margin-bottom: 10px;
+    }
+    .music-btn:hover { transform: scale(1.05); background: rgba(255,46,99,0.18); }
+
+    #yesBtn { background: linear-gradient(135deg, #ff2e63, #ff7aa2); color: white; transition: transform 0.2s ease; }
+    #noBtn { background: linear-gradient(135deg, #6c757d, #adb5bd); color: white; position: relative; }
+    
+    .floatingNo { position: absolute !important; z-index: 10; }
+  </style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Page 1: Welcome -->
+<div id="page1" class="screen active">
+  <h1>Hi Juslin 💖</h1>
+  <p>Hey... just a small surprise I built for you to brighten your day. Take a breath, start the music, and see what's next</p>
+  
+  <button class="music-btn" id="musicStartBtn">Tap to start music 🎵</button>
+  
+  <div class="btn-row">
+    <button class="next-btn" onclick="nextPage(1, 2)">Next ✨</button>
+  </div>
+</div>
+
+<!-- Page 2: Heart-touching Message -->
+<div id="page2" class="screen">
+  <h1>I dont know what to say 🙂</h1>
+  <p>I know i never was a good partner for you
+    as you said before maybe your ex love you more than me or something..
+    even i dont know that u had found someone else in your life..
+    But my life was not that much easy like you thought its been hard and its been even harder for you when i beahved like that with you
+    .</p>
+  <button class="next-btn" onclick="nextPage(2, 3)">Next ✨</button>
+</div>
+
+<!-- Page 3: The Big Question -->
+<div id="page3" class="screen">
+  <h1>Its not over my stupid message🫠</h1>
+  <p>I dont know even will you consider me again in your life as jovel or ichayan or anyone idk what to say
+    I know this will be cliche, but i still look at out old message sand smile a lot. 
+    A small change in your mood can greatly affect me a lot. Right now also when you called i felt so happy even you said you are leaving now. 
+  <br><br>Will you be mine again? 🥺</p>
+  <div class="btn-row">
+    <button id="yesBtn">YES 😍</button>
+    <button id="noBtn">NO 🙈</button>
+  </div>
+</div>
+
+<!-- Page 4: Final Success Screen -->
+<div id="page4" class="screen">
+  <h1>YAYYYYY ❤️</h1>
+  <p>You just made me the happiest person! 💖</p>
+  <h3 style="color: #ff2e63; margin-top: 20px;">Yours, Jovel</h3>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="pagal_iravai.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Background Hearts Generation
+  function createHearts(){
+    const heartsContainer = document.getElementById("hearts");
+    for(let i=0; i<30; i++){
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      const size = Math.floor(Math.random()*18)+12;
+      const left = Math.floor(Math.random()*100);
+      const duration = Math.random()*6+5;
+      const colors = ["#ff2e63","#ff69b4","#ff85c0","#ffb3c6","#ff4d6d"];
+      heart.style.width = size+"px";
+      heart.style.height = size+"px";
+      heart.style.left = left+"vw";
+      heart.style.animationDuration = duration+"s";
+      heart.style.background = colors[Math.floor(Math.random()*colors.length)];
+      heartsContainer.appendChild(heart);
+    }
+  }
+  createHearts();
+
+  // Music Play Logic
+  const musicStartBtn = document.getElementById("musicStartBtn");
+  const music = document.getElementById("bgMusic");
+
+  musicStartBtn.addEventListener("click", async () => {
+    try {
+      await music.play();
+      musicStartBtn.textContent = "Music playing 🎶💖";
+      musicStartBtn.disabled = true;
+      musicStartBtn.style.opacity = "0.7";
+      musicStartBtn.style.transform = "none";
+    } catch(err){
+      console.log("Audio play failed:", err);
+    }
+  });
+
+  // Page Transition Logic
+  function nextPage(current, next) {
+    // If they didn't click the music button, try to play it anyway on "Next"
+    if(current === 1 && !musicStartBtn.disabled) {
+      music.play().catch(e => console.log("Audio play prevented"));
+    }
+
+    document.getElementById(`page${current}`).classList.remove('active');
+    setTimeout(() => {
+      document.getElementById(`page${next}`).classList.add('active');
+    }, 400); // Wait for the fade-out before fading in the next
+  }
+
+  // Escaping "NO" Button Logic
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  let yesScale = 1;
+
+  function moveNoButton() {
+    noBtn.classList.add("floatingNo");
+    document.body.appendChild(noBtn); 
+
+    const padding = 20;
+    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+    
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+    
+    yesScale += 0.2;
+    yesBtn.style.transform = `scale(${yesScale})`;
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  // YES Button Click
+  yesBtn.addEventListener("click", () => {
+    if(document.body.contains(noBtn)) {
+      noBtn.style.display = 'none';
+    }
+    nextPage(3, 4);
+  });
+</script>
+</body>
+</html>
